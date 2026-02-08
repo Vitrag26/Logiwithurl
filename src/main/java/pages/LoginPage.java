@@ -19,7 +19,7 @@ public class LoginPage {
 		this.driver=driver;
 		
 	}
-By Username=By.xpath("//input[@id='email111']");
+By Username=By.xpath("//input[@id='email1']");
 By password=By.xpath("//input[@id='password1']");
 By submit =By.className("submit-btn");
 By singin=By.xpath("//h2[normalize-space()='Sign In']");
@@ -31,12 +31,12 @@ public boolean isSignUpPresent()
 	return status;
 }
 
-public DashBoardPage Logintoapplication(String user,String pass)
+public DashBoardPage Logintoapplication(String user,String pass) throws InterruptedException
 {
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
-	wait.until(ExpectedConditions.visibilityOfElementLocated(Username));
+
 	driver.findElement(Username).sendKeys(user);
 	driver.findElement(password).sendKeys(pass);
+	Thread.sleep(20);
 	driver.findElement(submit).click();
 	DashBoardPage dashboard=new DashBoardPage(driver);
 	return dashboard;
